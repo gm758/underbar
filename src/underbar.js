@@ -167,6 +167,7 @@
     for (i; i < collection.length; i++) {
       accumulator = iterator(accumulator, collection[i]);
     }
+	return accumulator;
     //gm758, 11/14/2015, unclear how the initial accumulator should work with objects
   };
 
