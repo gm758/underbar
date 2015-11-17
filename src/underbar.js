@@ -81,7 +81,7 @@
     var result = [];
     _.each(collection, function(item) {
       if (test(item)) result.push(item);
-    }
+    })
     return result;
   };
 
@@ -113,7 +113,7 @@
       }
     } else {
       for (var elem in collection) {
-        result.push(iterator(collection[elem], elem, collection);
+        result.push(iterator(collection[elem], elem, collection));
       }
     }
     return result;
