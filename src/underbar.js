@@ -160,7 +160,7 @@
   //          No accumulator is given so the first element is used.
   _.reduce = function(collection, iterator, accumulator) {
     var i = 0;
-    if (!accumulator) {
+    if (accumulator === undefined) {
       accumulator = collection[0];
       i++;
     }
