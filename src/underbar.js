@@ -188,7 +188,7 @@
   _.every = function(collection, iterator) {
     // TIP: Try re-using reduce() here.
     return _.reduce(collection, function(stillTrue, item) {
-      if (!a) {
+      if (!stillTrue) {
         return false;
       }
       return iterator(item);
