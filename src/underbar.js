@@ -228,6 +228,7 @@
         obj[prop] = arguments[i][prop];
       }
     }
+	return obj;
   };
 
   // Like extend, but doesn't ever overwrite a key that already
@@ -238,6 +239,7 @@
         if (!(prop in obj)) obj[prop] = arguments[i][prop];
       }
     }
+	return obj;
   };
 
 
