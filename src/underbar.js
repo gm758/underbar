@@ -391,8 +391,17 @@
   //
   // Hint: Use Array.isArray to check if something is an array
   _.flatten = function(nestedArray, result) {
+	  if (result === undefined) result = [];
+	  for (var i = 0; i < nestedArray.length; i++) {
+		  if (!Array.isArray(nestedArray[i])) {
+			  result.push(nestedArray[i]);
+		  } else {
+			  _.flatten(nestedArray[i], result);
+		  }
+	  }
+	  return result;
+	  //gm 12/8/15 - think more about this solution. why is result an argument?
   };
-
   // Takes an arbitrary number of arrays and produces an array that contains
   // every item shared between all the passed-in arrays.
   _.intersection = function() {
