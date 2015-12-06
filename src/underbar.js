@@ -153,16 +153,31 @@
   //   }); // should be 5, regardless of the iterator function passed in
   //          No accumulator is given so the first element is used.
   _.reduce = function(collection, iterator, accumulator) {
-    var i = 0;
-    if (accumulator === undefined) {
-      accumulator = collection[0];
-      i++;
-    }
-    for (i; i < collection.length; i++) {
-      accumulator = iterator(accumulator, collection[i]);
-    }
+
+    if (Array.isArray(collection)) {
+      var i = 0;
+      if (accumulator === undefined) {
+        accumulator = collection[0];
+        i++;
+      }
+      for (i; i < collection.length; i++) {
+        accumulator = iterator(accumulator, collection[i]);
+      }
+	} else if (typeof collection === "object") {
+		var first = true;
+		for (var elem in collection) {
+			if (collection.hasOwnProperty(elem)) {
+				if (first) {
+					accumulator = collection[elem];
+					first = false;
+				} else {
+					accumulator = iterator(accumulator, collection[elem]);
+				}
+			}
+		}
+	}
+
 	return accumulator;
-    //gm758, 11/14/2015, unclear how the initial accumulator should work with objects
   };
 
   // Determine if the array or object contains a given value (using `===`).
